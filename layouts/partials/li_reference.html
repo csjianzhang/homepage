@@ -1,0 +1,69 @@
+{{ $index := .index }}
+{{ $item := .Page }}
+{{ $cite := print $item.File.Dir "/cite.bib" }}
+{{ $date_format := site.Params.publications.date_format | default "2006" }}
+
+<div class="view-list-item" style="display: table-row;">
+  <div style="display: table-cell; padding-right: 10px;">
+    [{{ add 1 $index }}]
+  </div>
+  <div style="display: table-cell; padding-bottom: 10px;">
+    {{/* Paper title */}}
+    {{ print "**" $item.Title "**" | markdownify }}
+    <br />
+    {{/* Paper authors */}}
+    {{ with $item.Params.authors }}
+      {{ $total := len . }}
+      {{ range $index, $author := . }}
+        {{ $highlight_authors := slice $item.Site.Params.author }}
+        {{ with $item.Params.highlight_authors }}
+          {{ $highlight_authors = . }}
+        {{ end }}
+        {{ if in $highlight_authors $author }}
+          {{ $author = print "**" $author "**" }}
+        {{ end }}
+        {{ if gt (sub $total 1) $index }}
+          {{ $author = print $author ", "}}
+        {{ end }}
+        {{ $author | markdownify }}
+      {{ end }}
+    {{ end }}
+    <br />
+    {{/* Paper Publication name */}}
+    {{ with $item.Params.publication }}
+      {{ $publication := markdownify . }}
+      {{ with $item.Params.publication_short }}
+         {{ $publication = print $publication "(" . ")" }}
+      {{ end }}
+      {{ with $item.Params.publication_position }}
+         {{ $publication = print $publication ", " . }}
+      {{ end }}
+      {{ with ($item.Date.Format $date_format) }}
+         {{ $publication = print $publication ", " . }}
+      {{ end }}
+      {{ print $publication "." | markdownify }}
+    {{ end }}
+    <br />
+    {{/* Links */}}
+    {{ with $item.Params.url_project }}
+      <a href="{{ . }}" target="_blank" rel="noopener">[Project]</a>
+    {{ end }}
+    {{ with $item.Params.url_pdf }}
+      <a href="{{ . }}" target="_blank" rel="noopener">[PDF]</a>
+    {{ end }}
+    {{ with $item.Params.url_code }}
+      <a href="{{ . }}" target="_blank" rel="noopener">[Code]</a>
+    {{ end }}
+    {{ if fileExists $cite }}
+      <a class="cite" href="{{ absURL $cite }}" target="_blank" rel="noopener">[Cite]</a>
+    {{ end }}
+    {{ range $item.Params.links }}
+      {{ if and .url (ne "#" .url) }}
+        <a href="{{ .url }}" target="_blank" rel="noopener">[{{ .name | markdownify }}]</a>
+      {{ else }}
+        {{ $color := default "#dc3545" .color }}
+        <span style="color: {{ $color }};text-decoration: none;">[{{ .name | markdownify }}]</span>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>

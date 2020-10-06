@@ -1,0 +1,6 @@
+{{- /* A Hugo Markdown render hook to parse links, opening external links in new tabs. */ -}}
+<a href="{{ .Destination | safeURL }}"
+   {{ with .Title}} title="{{ . }}"{{ end }}
+   target="_blank" rel="noopener">
+  {{ .Text | safeHTML }}
+</a>

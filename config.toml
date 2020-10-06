@@ -1,0 +1,40 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Jian Zhang (张健)"
+theme = "researcher"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "robotsTXT"]
+enableEmoji = true
+math = false  # enable KaTeX (https://katex.org/) globally
+
+[params]
+  author = "Jian Zhang"
+  description = "Jian Zhang's Homepage"
+  favicon = "favicon.ico"  # path to a .ico to use as favicon
+  custom_css = ["sass/custom.scss"]
+  [params.footer]
+    text = "Copyright © 2011~2020 by Jian Zhang. All rights Reserved. | Powered by Olivier Roques"
+    url = "https://github.com/ojroques/hugo-researcher"
+
+[permalinks]
+  "/" = "/:filename"
+
+[menu]
+  [[menu.main]]
+    name = "Codes"
+    url = "#codes"
+    weight = 1
+  [[menu.main]]
+    name = "Publications"
+    url = "#journal_articles"
+    weight = 2
+  [[menu.main]]
+    name = "Activities"
+    url = "#reviewers"
+    weight = 3
+  [[menu.main]]
+    name = "Awards"
+    url = "#awards"
+    weight = 4
+
+[markup.goldmark.renderer]
+  unsafe = true  # allow raw HTML in markdown files

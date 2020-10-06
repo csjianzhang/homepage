@@ -1,0 +1,49 @@
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+
+<script src="/js/layer/layer.js"></script>
+
+<script>
+  $('a.cite').click(function(e) {
+    e.preventDefault();
+    $this = $(this);
+    var url = $this.attr('href');
+    var style = 'padding: 15px; overflow: auto;'
+
+    var loading = null;
+    $.ajax({
+      url: url,
+      beforeSend: function() {
+        loading = layer.load()
+        return true;
+      },
+    }).done(function(data) {
+      layer.close(loading);
+      var content = '<pre style="' + style + '">' + data + '</pre>';
+      layer.open({
+        type: 1,
+        title: 'Cite',
+        maxmin: true,
+        shadeClose: true, //点击遮罩关闭层
+        area : ['500px' , '300px'],
+        content: content,
+        skin: 'no-break-word',
+        btn: ['Copy', 'Download'],
+        yes: function() {},
+        btn2: function(){
+          window.open(url, '_blank');
+        },
+        success: function() {
+          new ClipboardJS('.layui-layer-btn0', {
+            text: function() {
+              return data
+            }
+          });
+        }
+      });
+    }).fail(function() {
+      layer.close(loading);
+      layer.msg('Loading failed, please try again later!')
+    })
+  })
+</script>
