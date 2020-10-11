@@ -35,7 +35,7 @@ publication_types:
 abstract: ''
 publication: '*IEEE Journal of Selected Topics in Signal Processing (JSTSP)*'
 url_pdf: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9019857
-url_project: https://jianzhang.tech/projects/OPINENet/
+url_project: /projects/OPINENet/
 url_code: https://github.com/jianzhangcs/OPINE-Net
 
 ---

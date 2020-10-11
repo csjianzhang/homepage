@@ -37,7 +37,7 @@ abstract: ''
 publication: '*Data Compression Conference (DCC)*'
 
 url_pdf: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6543069
-url_code: https://jianzhang.tech/codes/SGSR-CS_Code_ver2.0.rar
+url_code: /codes/SGSR-CS_Code_ver2.0.rar
 
 # Custom links (optional).
 #   Uncomment and edit lines below to show custom links.

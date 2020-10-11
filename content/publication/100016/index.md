@@ -37,8 +37,8 @@ abstract: ''
 publication: '*IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*'
 
 # url_pdf: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7298646
-url_pdf: https://jianzhang.tech/papers/CVPR2015_Liu.pdf
-url_code: https://jianzhang.tech/codes/AST-NLS.rar
+url_pdf: /papers/CVPR2015_Liu.pdf
+url_code: /codes/AST-NLS.rar
 
 # Custom links (optional).
 #   Uncomment and edit lines below to show custom links.

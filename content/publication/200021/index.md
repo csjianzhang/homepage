@@ -34,9 +34,9 @@ publication_types:
 - 2
 abstract: ''
 publication: '*IEEE Transactions on Image Processing (TIP)*'
-url_pdf: https://jianzhang.tech/papers/TIP2014_single.pdf
+url_pdf: /papers/TIP2014_single.pdf
 url_code: https://github.com/jianzhangcs/GSR
-url_project: https://jianzhang.tech/projects/GSR/
+url_project: /projects/GSR/
 
 # Custom links (optional).
 #   Uncomment and edit lines below to show custom links.

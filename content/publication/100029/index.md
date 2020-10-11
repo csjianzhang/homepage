@@ -36,7 +36,7 @@ publication_types:
 abstract: ''
 publication: '*Visual Communications and Image Processing (VCIP)*'
 # url_pdf: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6410749
-url_pdf: https://jianzhang.tech/papers/VCIP2011.pdf
+url_pdf: /papers/VCIP2011.pdf
 
 # Custom links (optional).
 #   Uncomment and edit lines below to show custom links.

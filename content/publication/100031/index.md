@@ -36,7 +36,7 @@ publication_types:
 abstract: ''
 publication: '*Pacific-Rim Conference on Multimedia (PCM)*'
 url_pdf: https://link.springer.com/chapter/10.1007/978-3-642-10467-1_119
-url_code: https://jianzhang.tech/codes/FEIMF.rar
+url_code: /codes/FEIMF.rar
 
 # Custom links (optional).
 #   Uncomment and edit lines below to show custom links.
