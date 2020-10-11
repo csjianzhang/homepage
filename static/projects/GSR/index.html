@@ -1,0 +1,797 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0076)http://www.cs.huji.ac.il/~raananf/projects/lss_upscale/sup_images/index.html -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Group-based Sparse Representation for Image Restoration</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<SCRIPT type=text/javascript>
+<!--
+
+<!--
+function selectImage(_this,image)
+{
+	var d=document;
+	image.src=_this.src;
+	image.parentNode.href=_this.src;
+	image.style.borderColor=_this.style.borderColor;
+}
+function setBorder(image)
+{
+	if (image.src.indexOf('org.png')!=-1)
+	{
+		image.style.borderColor='gray';
+	}
+	if (image.src.indexOf('KR.png')!=-1)
+	{
+		image.style.borderColor='#FF8C00';
+	}
+	if (image.src.indexOf('MCA.png')!=-1)
+	{
+		image.style.borderColor='#1E90FF';
+	}
+	if (image.src.indexOf('JSM.png')!=-1)
+	{
+		image.style.borderColor='red';
+	}
+	if (image.src.indexOf('FOE.png')!=-1)
+	{
+		image.style.borderColor='#0033FF';
+	}
+	if (image.src.indexOf('BP.png')!=-1)
+	{
+		image.style.borderColor='#FFDD00';
+	}
+	if (image.src.indexOf('SALSA.png')!=-1)
+	{
+		image.style.borderColor='#009933';
+	}
+	if (image.src.indexOf('gf.png')!=-1)
+	{
+		image.style.borderColor='#FF0050';
+	}
+	if (image.src.indexOf('Org.png')!=-1)
+	{
+		image.style.borderColor='#0099CC';
+	}
+	if (image.src.indexOf('IFASDA.png')!=-1)
+	{
+		image.style.borderColor='#FF8C00';
+	}
+	if (image.src.indexOf('TV.png')!=-1)
+	{
+		image.style.borderColor='#1E90FF';
+	}
+}
+
+
+-->
+//-->
+</SCRIPT>
+
+<STYLE type=text/css>
+IMG.thumbnail {
+	BORDER-BOTTOM-STYLE: solid; BORDER-RIGHT-STYLE: solid; BORDER-TOP-STYLE: solid; HEIGHT: 128px; BORDER-LEFT-STYLE: solid
+}
+P.thumbnail_title {
+	MARGIN-TOP: 30px; MARGIN-BOTTOM: 0px; FONT-SIZE: 12px
+}
+IMG {
+	BORDER-BOTTOM-STYLE: solid; BORDER-BOTTOM-COLOR: gray; BORDER-RIGHT-STYLE: solid; BORDER-TOP-COLOR: gray; MAX-WIDTH: 800px; BORDER-TOP-STYLE: solid; BORDER-RIGHT-COLOR: gray; BORDER-LEFT-STYLE: solid; BORDER-LEFT-COLOR: gray
+}
+BODY {
+	TEXT-ALIGN: left; FONT-FAMILY: Arial; COLOR: #4f4f4f; FONT-SIZE: 14px
+}
+H1 {
+	FONT-SIZE: 30px; FONT-WEIGHT: normal
+}
+H2 {
+	FONT-SIZE: 25px; FONT-WEIGHT: normal
+}
+H3 {
+	MARGIN-TOP: 60px; FONT-SIZE: 25px
+}
+H4 {
+	MARGIN-TOP: 60px; FONT-SIZE: 25px
+}
+A {
+	FONT-VARIANT: normal; FONT-STYLE: normal; COLOR: #4f4f4f; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: green;
+	text-decoration: none;
+}
+.contents {
+	TEXT-ALIGN: left; FONT-SIZE: 18px
+}
+.STYLE2 {
+	font-size: 26px;
+	font-weight: bold;
+}
+.STYLE3 {font-size: 18px}
+.STYLE4 {font-size: 20px}
+.STYLE5 {font-size: 16px}
+.STYLE7 {font-size: 18px; font-weight: bold; }
+.STYLE13 {font-size: 12px}
+a:link {
+	color: #0066FF;
+	text-decoration: underline;
+}
+a:visited {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: underline;
+}
+.STYLE14 {font-size: 14px}
+.STYLE15 {color: #FFFFFF}
+.STYLE17 {font-size: 15px}
+.STYLE24 {color: #990000}
+.STYLE28 {color: #CC3300}
+.STYLE29 {
+	color: #6600CC;
+	font-weight: bold;
+}
+.STYLE30 {
+	font-size: 16px;
+	font-weight: bold;
+	color: #E04503;
+}
+.STYLE31 {
+	color: #CC3300;
+	font-size: 16px;
+	font-weight: bold;
+}
+.STYLE32 {font-size: 14px; color: #CC3300;}
+.STYLE34 {
+	font-size: 16;
+	color: #CC3300;
+	font-weight: bold;
+}
+.STYLE35 {color: #CC3300; font-size: 14px; font-weight: bold; }
+.STYLE37 {font-size: 12px; color: #4f4f4f; }
+.STYLE45 {font-family: Arial, Helvetica, sans-serif}
+.STYLE46 {font-size: 14px; font-family: Arial, Helvetica, sans-serif; }
+.STYLE47 {font-size: 12px; font-family: Arial, Helvetica, sans-serif; }
+</STYLE>
+
+<META name=GENERATOR content="MSHTML 8.00.6001.18702"></HEAD>
+<BODY>
+<CENTER>
+  <H1 class="STYLE2"><br>
+    <a name="PageTop"></a><span class="STYLE28"> Group-based Sparse Representation for Image Restoration</span> </H1>
+  <H2><span class="STYLE3"><span class="STYLE4"><a href="http://jianzhang.tech">Jian Zhang</a><span class="STYLE5"><sup>1</sup></span>, Debin Zhao<span class="STYLE5"><sup>1</sup></span>,  Wen Gao<span class="STYLE5"><sup>2</sup></span></span><br>
+    </span><span class="STYLE5"><br>
+      <span class="STYLE17"><span class="STYLE14"><sup>1</sup></span>School of Computer Science and Technology, Harbin Institute of Technology<br>
+      <span class="STYLE14"><sup>2</sup></span>National Engineering Laboratory for Video Technology, Peking University</span></span><BR>
+  </H2>
+</CENTER>
+<BLOCKQUOTE>
+  <P align="justify"><strong>Abstract</strong>&mdash;Traditional patch-based sparse representation modeling of natural images usually suffer from two problems. First, it has to solve a large-scale optimization problem with high computational complexity in dictionary learning. Second, each patch is considered independently in dictionary learning and sparse coding, which ignores the relationship among patches, resulting in inaccurate sparse coding coefficients. In this paper, instead of using patch as the basic unit of sparse representation, we exploit the concept of group as the basic unit of sparse representation, which is composed of nonlocal patches with similar structures, and establish a novel sparse representation modeling of natural images, called group-based sparse representation (GSR). The proposed GSR is able to sparsely represent natural images in the domain of group, which enforces the intrinsic local sparsity and nonlocal self-similarity of images simultaneously in a unified framework. Moreover, an effective self-adaptive dictionary learning method for each group with low complexity is designed, rather than dictionary learning from natural images. To make GSR tractable and robust, a split Bregman based technique is developed to solve the proposed GSR-driven   L0 minimization problem for image restoration efficiently. Extensive experiments on image inpainting, image deblurring and image compressive sensing recovery manifest that the proposed GSR modeling outperforms many current state-of-the-art schemes in both PSNR and visual perception.<br>
+</P>
+  <P align="justify" class="STYLE30">Paper: </P>
+  <P align="justify" class="STYLE5"><span class="STYLE17"><strong>Group-based Sparse Representation for Image Restoration</strong><br>
+    J. Zhang, D. Zhao,  W. Gao<br>
+    <em> IEEE Transactions on Image Processing</em><br>
+    <a href="http://csjianzhang.github.io/papers/TIP2014_single.pdf">[PDF]</a>&#12288;<a href="http://csjianzhang.github.io/codes/GSR_Code_Package_3.0.zip">[Matlab Code]</a></span>&nbsp;&nbsp;&nbsp;</P>
+  <P align="justify" class="STYLE5"><span class="STYLE28"><strong>Instructions:</strong> click on the <span class="STYLE29">thumbnail image</span> to see the corresponding results from various algorithms.</span></P>
+</BLOCKQUOTE>
+<CENTER>
+  <HR>
+  <h2 align="left" class="STYLE7"><span class="STYLE7">PSNR (dB) Comparison of Experimental Results:</span><br>
+    <br>
+      <span class="STYLE14"><span class="STYLE15"><a href="#Results1">1. Image Inpainting </a><br>
+      <a href="#Results2">2. Image Deblurring</a><br>
+  <a href="#Results3">3. Image Compressive Sensing Recovery </a></span></span></h2>
+  <p align="left" class="STYLE3"><span class="STYLE7"><a href="#Results1"></a></span><span class="STYLE7"><a href="#Results1"><a name="Results1"></a></a>1. Image Inpainting</span></p>
+  <span class="STYLE31">Image Restoration from Partial Random Samples</span><br>
+  <table width="1018" height="539" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="535"> <p class=thumbnail_title>Input</p>
+            <img 
+      src="Barbara256rgb.png_ratio0.2_7.3572_random__missing.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Barbara20); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>Ground Truth<br>
+          <img 
+      src="Barbara256rgb.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Barbara20); 
+      onload=setBorder(this);></p>
+          <p>&nbsp;</p></th>
+        <th width="463"><h2><span class="STYLE4"><strong>Barbara</strong></span> <span class="STYLE13">in the case of <em>Ratio=20%</em></span><br>
+            <br>          
+            <img 
+      src="Barbara256rgb.png_ratio0.2_7.3572_random__missing.png" alt=Barbara20 name="Barbara20" width="256" height="256" border="0" 
+      id=Barbara20><br>
+        </h2></th>
+        <th width=171><p align="center" class=thumbnail_title>HSR  (28.83 dB)</p>
+            <div align="center"><img 
+      src="Barbara256rgb.png_ratio0.2_28.8275_random_HSR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Barbara20); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>SKR (21.92 dB) <br>
+            <img 
+      src="Barbara256rgb.png_ratio0.2_21.9248_KR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Barbara20); 
+      onload=setBorder(this);></p>
+          <p align="center" class=thumbnail_title>NLTV (23.46 dB) <br>
+                  <img 
+      src="Barbara256rgb.png_ratio0.2_23.4571_random_NLTV.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Barbara20); 
+      onload=setBorder(this);></p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>SAIST (29.68 dB) </p>
+          <img 
+      src="Barbara256rgb.png_ratio0.2_29.6854_random_SAIST.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Barbara20); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>BPFA (25. 70 dB) <br>
+            <img 
+      src="Barbara256rgb_ratio0.2_25.7035_BP.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Barbara20); 
+      onload=setBorder(this);></p>
+          <p class=thumbnail_title> Proposed  (31.32 dB) <br>
+        <img 
+      src="Barbara256rgb.png_ratio0.2_31.3176_random_GSR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Barbara20); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <table width="1018" height="536" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="532"> <p class=thumbnail_title>Input</p>
+            <img 
+      src="Parrots256.tif_ratio0.2_6.3471_random__missing.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Parrots20); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>Ground Truth<br>
+          <img 
+      src="Parrots256.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Parrots20); 
+      onload=setBorder(this);></p>
+          <p>&nbsp;</p></th>
+        <th width="463"><span class="STYLE4"><strong>Parrots</strong></span> <span class="STYLE13">in the case of <em>Ratio=20%</em></span><br>
+          <br>          <img 
+      src="Parrots256.tif_ratio0.2_6.3471_random__missing.png" alt=Parrots20 name="Parrots20" width="256" height="256" border="0" 
+      id=Parrots20><br></th>
+        <th width=171><p align="center" class=thumbnail_title>HSR (28.63 dB) </p>
+            <div align="center"><img 
+      src="Parrots256.tif_ratio0.2_28.6285_random_HSR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Parrots20); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>SKR (28.79 dB) <br>
+            <img 
+      src="Parrots256.tif_ratio0.2_28.7909_KR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Parrots20); 
+      onload=setBorder(this);></p>
+          <p align="center" class=thumbnail_title>NLTV (27.58 dB) <br>
+                  <img 
+      src="Parrots256.tif_ratio0.2_27.5795_random_NLTV.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Parrots20); 
+      onload=setBorder(this);></p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>SAIST (29.41 dB) </p>
+          <img 
+      src="Parrots256.tif_ratio0.2_29.4166_random_SAIST.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Parrots20); 
+      onload=setBorder(this);>
+            <p class=thumbnail_title>BPFA (27.63 dB) <br>
+              <img 
+      src="Parrots256_ratio0.2_27.6306_BP.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Parrots20); 
+      onload=setBorder(this);></p>
+          <p class=thumbnail_title>Proposed (29.83 dB) <br>
+        <img 
+      src="Parrot256rgb.png_ratio0.2_29.8358_random_GSR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,Parrots20); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <table width="1018" height="536" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="532"> <p class=thumbnail_title>Input</p>
+            <img 
+      src="House256rgb.png_ratio0.2_6.1576_random__missing.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,House20); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>Ground Truth<br>
+          <img 
+      src="House256rgb.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,House20); 
+      onload=setBorder(this);></p>
+          <p>&nbsp;</p></th>
+        <th width="463"><span class="STYLE4"><strong>House</strong></span> <span class="STYLE13">in the case of <em>Ratio=20%</em></span><br>
+          <br>          <img 
+      src="House256rgb.png_ratio0.2_6.1576_random__missing.png" alt=House20 name="House20" width="256" height="256" border="0" 
+      id=House20><br></th>
+        <th width=171><p align="center" class=thumbnail_title>HSR (32.35 dB) </p>
+            <div align="center"><img 
+      src="House256rgb.png_ratio0.2_32.3464_random_HSR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,House20); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>SKR (30.40 dB) <br>
+            <img 
+      src="House256rgb.png_ratio0.2_30.4018_KR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,House20); 
+      onload=setBorder(this);></p>
+          <p align="center" class=thumbnail_title>NLTV (31.19 dB) <br>
+                  <img 
+      src="House256rgb.png_ratio0.2_31.1902_random_NLTV.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,House20); 
+      onload=setBorder(this);></p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>SAIST (35.73 dB)</p>
+          <img 
+      src="House256rgb.png_ratio0.2_35.7349_random_SAIST.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,House20); 
+      onload=setBorder(this);>
+            <p class=thumbnail_title>BPFA (30.89 dB) <br>
+              <img 
+      src="House256rgb_ratio0.2_30.8924_BP.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,House20); 
+      onload=setBorder(this);></p>
+          <p class=thumbnail_title>Proposed (35.61 dB) <br>
+                  <img 
+      src="House256rgb.png_ratio0.2_35.6127_random_GSR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,House20); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <p><span class="STYLE31">Text Removal </span></p>
+  <table width="1018" height="558" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="554"> <p class=thumbnail_title>Input</p>
+            <img src="Barbara256rgb.png_ratio-1_13.8855_text__missing.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraText); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>Ground Truth<br>
+            <img src="Barbara256rgb.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraText); 
+      onload=setBorder(this);></p>
+          <p>&nbsp;</p></th>
+        <th width="463"><h2><span class="STYLE4"><strong>Barbara</strong></span><strong><br>
+          </strong><br>
+          <img 
+      src="Barbara256rgb.png_ratio-1_13.8855_text__missing.png" alt=BarbaraText name="BarbaraText" width="256" height="256" border="0" 
+      id=BarbaraText><br>
+        </h2></th>
+        <th width=171><p align="center" class=thumbnail_title STYLE14>HSR (38.86 dB) </p>
+        <div align="center"><img src="Barbara256rgb.png_ratio-1_38.8556_text_HSR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraText); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>SKR (30.81 dB) <br>
+            <img src="Barbara256rgb.png_text_30.8074_KR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraText); 
+      onload=setBorder(this);></p>
+          <p align="center" class=thumbnail_title>NLTV (32.60 dB) <br>
+            <img src="Barbara256rgb.png_ratio-1_32.5986_text_NLTV.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraText); 
+      onload=setBorder(this);></p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>SAIST (39.00 dB) </p>
+          <img src="Barbara256rgb.png_ratio-1_39_text_SAIST.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraText); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>BPFA (34.28 dB) <br>
+            <img src="Barbara256rgb.png_text_34.2873_BP.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraText); 
+      onload=setBorder(this);></p>
+          <p class=thumbnail_title>Proposed (40.86 dB) <br>
+        <img src="Barbara256rgb.png_ratio-1_40.8628_text_SGSR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraText); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <table width="1018" height="536" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="532"> <p class=thumbnail_title>Input</p>
+            <img src="House256rgb.png_ratio-1_13.133_text__missing.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseText); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>Ground Truth<br>
+          <img src="House256rgb.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseText); 
+      onload=setBorder(this);></p>
+          <p>&nbsp;</p></th>
+        <th width="463"><span class="STYLE4"><strong>House</strong></span><br> 
+        <br>          <img src="House256rgb.png_ratio-1_13.133_text__missing.png" alt=HouseText name="HouseText" width="256" height="256" border="0" 
+      id=HouseText><br></th>
+        <th width=171><p align="center" class=thumbnail_title>HSR (38.65 dB) </p>
+            <div align="center"><img src="House256rgb.png_ratio-1_42.0607_text_HSR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseText); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>SKR (38.65 dB) <br>
+            <img src="House256rgb.png_text_38.6486_KR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseText); 
+      onload=setBorder(this);></p>
+          <p align="center" class=thumbnail_title>NLTV (38.44 dB) <br>
+                  <img src="House256rgb.png_ratio-1_38.442_text_NLTV.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseText); 
+      onload=setBorder(this);></p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>SAIST (41.20 dB) </p>
+          <img src="House256rgb.png_ratio-1_41.1961_text_SAIST.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseText); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>BPFA (39.01 dB) <br>
+              <img src="House256rgb.png_text_39.0139_BP.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseText); 
+      onload=setBorder(this);></p>
+          <p class=thumbnail_title>Proposed (42.51 dB) <br>
+                  <img src="House256rgb.png_ratio-1_42.5144_text_SGSR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseText); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <H4 align="left"><span class="STYLE7"><a name="Results2"></a>2. Image Deblurring </span><br>
+  </H4>
+  <table width="1018" height="536" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="532"> <p class=thumbnail_title>Input</p>
+            <img src="bike_color.tif_Blurred_sigma_0.5_Type_0_PSNR_19.571dB.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BikeDeblur1); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>Ground Truth<br>
+                <img src="bike_color.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BikeDeblur1); 
+      onload=setBorder(this);></p>
+          <p>&nbsp;</p></th>
+        <th width="463"><span class="STYLE4"><strong>Bike<br>
+          <span class="STYLE32">Uniform Kernel:  9x9 with sigma=0.5</span></strong></span><br>
+        <br>          <img src="bike_color.tif_Blurred_sigma_0.5_Type_0_PSNR_19.571dB.png" alt=BikeDeblur1 name="BikeDeblur1" width="256" height="256" border="0" 
+      id=BikeDeblur1><br></th>
+        <th width=171><p align="center" class=thumbnail_title>TVMM (26.51 dB) </p>
+            <div align="center"><img src="bike_color.tif_TVMM_sigma_0.5_Type_0_PSNR_26.5145dB_FSIM_0.8885.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BikeDeblur1); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>L0_ABS (26.78 dB) <br>
+                <img src="bike_color.tif_ABS_sigma_0.5_Type_0_PSNR_26.7885dB_FSIM_0.89908.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BikeDeblur1); 
+      onload=setBorder(this);></p>
+          <p align="center" class=thumbnail_title><br>
+          </p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>IDDBM3D (28.45 dB) </p>
+            <img src="bike_color.tif_IDDBM3D_sigma_0.5_Type_0_exNum_3_PSNR_28.4566dB_FSIM_0.91889.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BikeDeblur1); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>NCSR (27.92 dB) <br>
+                <img src="bike_color.tif_NCSR_sigma_0.5_scale_6_Type_0_PSNR_27.9146dB_FSIM_0.9105.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BikeDeblur1); 
+      onload=setBorder(this);></p>
+          <p class=thumbnail_title>Proposed (28.61 dB) <br>
+                <img src="bike_color.tif_SGSR_sigma_0.5_thr_8_Type_0_PSNR_28.6104dB_FSIM_0.92112.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BikeDeblur1); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <table width="1018" height="536" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="532"> <p class=thumbnail_title>Input</p>
+            <img src="Barbara256rgb.png_Blurred_sigma_0.5_Type_1_PSNR_21.9861dB.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur2); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>Ground Truth<br>
+                <img src="Barbara256rgb.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur2); 
+      onload=setBorder(this);></p>
+          <p>&nbsp;</p></th>
+        <th width="463"><span class="STYLE4"><strong>Barbara</strong></span><br>
+            <span class="STYLE35">Gaussian Kernel: fspecial('Gaussian', [7 7], 8)  with sigma=0.5 </span><br>
+            <br>
+        <img src="Barbara256rgb.png_Blurred_sigma_0.5_Type_1_PSNR_21.9861dB.png" alt=BarbaraDeblur2 name="BarbaraDeblur2" width="256" height="256" border="0" 
+      id=BarbaraDeblur2><br></th>
+        <th width=171><p align="center" class=thumbnail_title>TVMM (27.79 dB) </p>
+            <div align="center"><img src="Barbara256rgb.png_TVMM_sigma_0.5_Type_1_PSNR_27.795dB_FSIM_0.91898.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur2); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>L0_ABS (28.39 dB) <br>
+                <img src="Barbara256rgb.png_ABS_sigma_0.5_Type_1_PSNR_28.3927dB_FSIM_0.93386.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur2); 
+      onload=setBorder(this);></p>
+          <p align="center" class=thumbnail_title><br>
+          </p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>IDDBM3D (31.73 dB) </p>
+            <img src="Barbara256rgb.png_IDDBM3D_sigma_0.5_Type_1_exNum_3_PSNR_31.7327dB_FSIM_0.95749.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur2); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>NCSR (30.37 dB) <br>
+                <img src="Barbara256rgb.png_NCSR_sigma_0.5_scale_12_Type_1_PSNR_30.3791dB_FSIM_0.95162.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur2); 
+      onload=setBorder(this);></p>
+          <p class=thumbnail_title>Proposed (33.52 dB) <br>
+                <img src="Barbara256rgb.png_SGSR_sigma_0.5_thr_8_Type_1_PSNR_33.5178dB_FSIM_0.96854.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur2); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <table width="1018" height="536" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="532"> <p class=thumbnail_title>Input</p>
+            <img src="Leaves256.tif_Blurred_sigma_0.5_Type_2_PSNR_16.052dB.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,LeavesDeblur3); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>Ground Truth<br>
+                <img src="Leaves256.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,LeavesDeblur3); 
+      onload=setBorder(this);></p>
+          <p>&nbsp;</p></th>
+        <th width="463"><span class="STYLE4"><strong>Leaves<br>
+        </strong></span><span class="STYLE35">Motion Kernel: fspecial('motion', 20, 45) with sigma=0.5 </span><br>
+            <br>          <img src="Leaves256.tif_Blurred_sigma_0.5_Type_2_PSNR_16.052dB.png" alt=LeavesDeblur3 name="LeavesDeblur3" width="256" height="256" border="0" 
+      id=LeavesDeblur3><br></th>
+        <th width=171><p align="center" class=thumbnail_title>TVMM (30.60 dB) </p>
+            <div align="center"><img src="Leaves256.tif_TVMM_sigma_0.5_Type_2_PSNR_30.6069dB_FSIM_0.94137.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,LeavesDeblur3); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>L0_ABS (29.44 dB) <br>
+                <img src="Leaves256.tif_ABS_sigma_0.5_Type_2_PSNR_29.4496dB_FSIM_0.93807.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,LeavesDeblur3); 
+      onload=setBorder(this);></p>
+          <p align="center" class=thumbnail_title>&nbsp;</p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>IDDBM3D (34.40 dB) </p>
+            <img src="Leaves256.tif_IDDBM3D_sigma_0.5_Type_2_exNum_6_PSNR_34.4006dB_FSIM_0.97035.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,LeavesDeblur3); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>NCSR (34.23 dB) <br>
+          <img src="Leaves256.tif_NCSR_sigma_0.5_scale_12_Type_2_PSNR_34.2352dB_FSIM_0.9702.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,LeavesDeblur3); 
+      onload=setBorder(this);></p>
+          <p class=thumbnail_title>Proposed (34.54 dB) <br>
+                <img src="Leaves256.tif_SGSR_sigma_0.5_thr_8_Type_2_PSNR_34.5448dB_FSIM_0.96852.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,LeavesDeblur3); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <table width="1018" height="536" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="532"> <p class=thumbnail_title>Input</p>
+            <img src="Barbara_Blurred_Type=7.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur7); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>Ground Truth<br>
+          <img src="Barbara256.png" width="128" height="128" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur7); 
+      onload=setBorder(this);></p>
+          <p>&nbsp;</p></th>
+        <th width="463"><span class="STYLE4"><strong>Barbara (256x256) <br>
+          </strong></span><span class="STYLE35">Uniform Kernel: 9x9 with sigma=sqrt(2) </span><br>
+          <br>
+          <img src="Barbara_Blurred_Type=7.png" alt=BarbaraDeblur7 name="BarbaraDeblur7" width="256" height="256" border="0" 
+      id=BarbaraDeblur7><br></th>
+        <th width=171><p align="center" class=thumbnail_title>TVMM (26.00 dB) </p>
+            <div align="center"><img src="barbara.tif_TVMM_BlurType_7_PSNR_26_FSIM_0.85383.png" width="128" height="128" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur7); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>L0_ABS (26.41 dB) <br>
+                <img src="barbara.tif_L0ABS_BlurType_7_PSNR_26.4102_FSIM_0.86927.png" width="128" height="128" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur7); 
+      onload=setBorder(this);></p>
+          <p align="center" class=thumbnail_title>&nbsp;</p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>IDDBM3D (27.98 dB) </p>
+            <img src="barbara.tif_IDDBM3D_BlurType_7_PSNR_27.9848_FSIM_0.90154.png" width="128" height="128" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur7); 
+      onload=setBorder(this);>
+            <p class=thumbnail_title>NCSR (28.10 dB) <br>
+                <img src="barbara.tif_BlurType_7_NCSR.png" width="128" height="128" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur7); 
+      onload=setBorder(this);></p>
+          <p class=thumbnail_title>Proposed (28.95 dB) <br>
+                <img src="barbara.tif_SGSR_Type_7_Factor_3_Thr_12_PSNR_28.9451dB_FSIM_0.92268.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur7); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <table width="1018" height="536" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="532"> <p class=thumbnail_title>Input</p>
+            <img src="House_Blurred_Type=8.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseDeblur8); 
+      onload=setBorder(this);>
+          <p class=thumbnail_title>Ground Truth<br>
+          <img src="house.png" width="126" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseDeblur8); 
+      onload=setBorder(this);></p>
+          <p>&nbsp;</p></th>
+        <th width="463"><span class="STYLE4"><strong>House (256x256) <br>
+          </strong></span><span class="STYLE35">Gaussian Kernel: fspecial('Gaussian', 25, 1.6) with sigma=sqrt(2) </span><br>
+          <br>
+          <img src="House_Blurred_Type=8.png" alt=HouseDeblur8 name="HouseDeblur8" width="256" height="256" border="0" 
+      id=HouseDeblur8><br></th>
+        <th width=171><p align="center" class=thumbnail_title>TVMM (33.01 dB) </p>
+            <div align="center"><img src="house.tif_TVMM_BlurType_8_PSNR_33.0172_FSIM_0.91393.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseDeblur8); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>L0_ABS (33.07 dB) <br>
+                <img src="house.tif_L0ABS_BlurType_8_PSNR_33.0713_FSIM_0.92122.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseDeblur8); 
+      onload=setBorder(this);></p>
+          <p align="center" class=thumbnail_title>&nbsp;</p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>IDDBM3D (34.08 dB) </p>
+            <img src="house.tif_IDDBM3D_BlurType_8_PSNR_34.0733_FSIM_0.93603.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseDeblur8); 
+      onload=setBorder(this);>
+            <p class=thumbnail_title>NCSR (33.63 dB) <br>
+                <img src="house.tif_BlurType_8_NCSR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseDeblur8); 
+      onload=setBorder(this);></p>
+          <p class=thumbnail_title>Proposed (34.45 dB) <br>
+                <img src="house.tif_SGSR_Type_8_Factor_5_Thr_8_PSNR_34.4509dB_FSIM_0.94197.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,HouseDeblur8); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <p><span class="STYLE3">Table 1: Six Typical Deblurring Experiments</span> <br>
+    <img src="Six_Typical_Deblurring_Exp.png" width="518" height="165"></p>
+  <p><span class="STYLE30">All the six typical experiments achieved by GSR can be downloaded here: <a href="http://idm.pku.edu.cn/staff/zhangjian/GSR/All_Six_Experiments_via_GSR.rar"> Download</a> </span><br>
+    <br>
+  </p>
+  <table width="1018" height="404" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="400"> <p class=thumbnail_title>Input</p>
+            <img 
+      src="blur.png" width="128" height="512" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur4); 
+      onload=setBorder(this);>
+            <p class=thumbnail_title>Ground Truth<br>
+                <img 
+      src="barbara.png" width="128" height="512" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur4); 
+      onload=setBorder(this);></p></th>
+        <th width="463"><span class="STYLE34">Barbara (512x512) (Scenario 2 in Table 1) <br>
+            </span><br>
+        <img 
+      src="blur.png" alt=BarbaraDeblur4 name="BarbaraDeblur4" width="500" height="500" border="0" 
+      id=BarbaraDeblur4><br></th>
+        <th width=171><p align="center" class=thumbnail_title>TVMM (ISNR=1.33 dB) </p>
+            <div align="center"><img 
+      src="barbara_2_TVMM_24.7757.png" width="128" height="512" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur4); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>NCSR (ISNR=3.64 dB) <br>
+                <img 
+      src="barbara.png_tt_0.4_NCSR_26.9435.png" width="128" height="512" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur4); 
+      onload=setBorder(this);></p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>IDDBM3D (ISNR=3.96 dB) </p>
+            <img 
+      src="barbara.png_2_IDDBM3D_3.9566.png" width="128" height="512" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur4); 
+      onload=setBorder(this);>
+            <p class=thumbnail_title>Proposed (ISNR=4.80 dB) <br>
+        <img 
+      src="barbara.png_SGSR_Type_2_factor_30_thr_6_ISNR_4.7967dB.png" width="128" height="512" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraDeblur4); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <p align="left"><br>
+    <br>
+    <span class="STYLE7"><a name="Results3"></a>3. Image Compressive Sensing Recovery </span><br>
+  </p>
+  <table width="1018" height="404" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="400"><p class=thumbnail_title>Ground Truth<br>
+                <img 
+      src="Barbara256.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraCS); 
+      onload=setBorder(this);></p></th>
+        <th width="463">Barbara <span class="STYLE13">(in the case of CS Ratio=0.2) </span><br>
+        <br>        <img 
+      src="Barbara256_rate_0.2_SPL_DWT_lambda_10_PSNR_23.9575dB.png" alt=BarbaraCS name="BarbaraCS" width="256" height="256" border="0" 
+      id=BarbaraCS><br></th>
+        <th width=171><p align="center" class=thumbnail_title>DWT (23.96 dB) </p>
+            <div align="center"><img 
+      src="Barbara256_rate_0.2_SPL_DWT_lambda_10_PSNR_23.9575dB.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraCS); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>MH (31.09 dB) <br>
+                <img 
+      src="Barbara256_rate_0.2_SPL_MH_PSNR_31.0857dB.tif_FSIM_0.94192.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraCS); 
+      onload=setBorder(this);></p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>TV (23.79 dB) <br>
+            <img src="Barbara256.tif_ratio0.2_TAAL3_mu256_beta32_time39.4839_23.7867dB.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraCS); 
+      onload=setBorder(this);></p>
+            <p class=thumbnail_title>CoS (26.60 dB) </p>
+            <img 
+      src="Barbara256.tif_ratio0.2_CoS_26.6005dB.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraCS); 
+      onload=setBorder(this);>
+            <p class=thumbnail_title>Proposed (34.59 dB) <br>
+            <img 
+      src="Barbara256_rate_0.2_SGSR_thr_8_PSNR_34.5909dB_FSIM_0.97033.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,BarbaraCS); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <table width="1018" height="382" border="0">
+    <tbody>
+      <tr>
+        <th width=197 height="378"><p class=thumbnail_title>Ground Truth<br>
+            <img 
+      src="Vessels96.tif_HR.png_HR.png" width="128" height="256" border="2" class=thumbnail 
+      onClick=selectImage(this,VesselsCS); 
+      onload=setBorder(this);></p></th>
+        <th width="463">Vessels <span class="STYLE13">(in the case of CS Ratio=0.2) </span><br>
+        <br>        <img 
+      src="Vessesl128_rate_0.2_SPL_DWT_lambda_10_PSNR_21.1437dB.tif_HR.png_HR.png" alt=VesselsCS name="VesselsCS" width="256" height="256" border="0" 
+      id=LeavesDeblur><br></th>
+        <th width=171><p align="center" class=thumbnail_title>DWT (21.14 dB) </p>
+            <div align="center"><img 
+      src="Vessesl128_rate_0.2_SPL_DWT_lambda_10_PSNR_21.1437dB.tif_HR.png_HR.png" width="128" height="384" border="2" class=thumbnail 
+      onClick=selectImage(this,VesselsCS); 
+      onload=setBorder(this);><a href="../Others/IRPRS/House256rgb.png_ratio0.2_MCA.png"></a> </div>
+          <p align="center" class=thumbnail_title>MH (24.95 dB) <br>
+                <img 
+      src="Vessels96_rate_0.2_SPL_MH_PSNR_24.9528dB.tif_FSIM_0.87562.png_HR.png_HR.png" width="128" height="384" border="2" class=thumbnail 
+      onClick=selectImage(this,VesselsCS); 
+      onload=setBorder(this);></p></th>
+        <th width=169 bordercolor="0"> <p class=thumbnail_title>TV (22.04 dB) <br>
+            <img 
+      src="Vessels96.tif_ratio0.2_TAAL3_mu256_beta32_time9.5317_22.0431dB.tif_FSIM_0.83561.png_HR.png_HR.png" width="128" height="384" border="2" class=thumbnail 
+      onClick=selectImage(this,VesselsCS); 
+      onload=setBorder(this);></p>
+            <p class=thumbnail_title>CoS (26.71 dB) </p>
+            <img 
+      src="Vessels96.tif_ratio0.2_CoS_26.7089dB.tif_FSIM_0.92147.png_HR.png_HR.png" width="128" height="384" border="2" class=thumbnail 
+      onClick=selectImage(this,VesselsCS); 
+      onload=setBorder(this);>
+            <p class=thumbnail_title>Proposed (31.58 dB) <br>
+                <img 
+      src="Vessels96_rate_0.2_SGSR_8_PSNR_31.5839dB_FSIM_0.9599.tif_HR.png_HR.png" width="128" height="384" border="2" class=thumbnail 
+      onClick=selectImage(this,VesselsCS); 
+      onload=setBorder(this);></p></th>
+      </tr>
+    </tbody>
+  </table>
+  <H4 align="left"><br>
+      <span class="STYLE3">References</span>    <br>
+      <span class="STYLE46"><br>
+      <span class="STYLE24">[1] SKR:</span> </span><span class="STYLE47">H. Takeda, S. Farsiu, and P. Milanfar, &ldquo;Kernel regression for image processing and reconstruction,&rdquo;<em> IEEE Trans. on Image Process.</em>, vol. 16, no. 2,  pp. 349&ndash;366, Feb. 2007.</span><span class="STYLE46"><br>
+      <span class="STYLE24">[2] HSR: </span></span><span class="STYLE47">X. Li, &ldquo;Image recovery from hybrid sparse  representation: a deterministic annealing approach,&rdquo;<em> IEEE J. of Selected Topics  in Signal Processing</em>, vol. 5, no. 5, pp. 953&ndash;962, Sep. 2011.<br>
+      </span><span class="STYLE46"><span class="STYLE24">[3] NLTV:</span> </span><span class="STYLE47">X. Zhang, M. Burger, X. Bresson and S. Osher,  &ldquo;Bregmanized nonlocal regularization for deconvolution and sparse  reconstruction,&rdquo;<em> SIAM J. Imaging Sci.</em>, vol. 3, no. 3, pp. 253&ndash;276, 2010.<br>
+      </span><span class="STYLE46"><span class="STYLE24">
+      [4] BPFA:</span> </span><span class="STYLE47">M. Zhou, H. Chen, J. Paisley, L. Ren, L. Li, Z. Xing, D. Dunson, G. Sapiro and L. Carin, &ldquo;Nonparametric Bayesian dictionary learning for analysis of noisy and incomplete images,&rdquo; <em>IEEE Trans. Image Processing</em>, vol. 21, no. 1, pp. 130&ndash;144, Jan. 2012.</span><span class="STYLE46"><br>
+      <span class="STYLE24">[5] SAIST:</span></span><span class="STYLE47"> W. Dong, G. Shi, and X. Li, &ldquo;Nonlocal image  restoration with bilateral variance estimation: a low-rank approach,&rdquo; <em>IEEE  Trans. On Image Processing</em>, vol. 22, no. 2, pp. 700&ndash;711, Feb. 2013. </span><span class="STYLE46"><br>
+      <span class="STYLE24">[6] MH: <span class="STYLE37">C. Chen, E. W. Tramel, and J. E. Fowler, &ldquo;Compressed-Sensing Recovery of  Images and Video Using Multi-hypothesis Predictions,&rdquo; <em>Proc. of the 45th Asilomar Conference on Signals, Systems, and  Computers</em>, Pacific Grove, CA, pp. 1193&ndash;1198, Nov. 2011.</span><br>
+[7] TV: <span class="STYLE37">C. Li, W. Yin, and Y. Zhang, &ldquo;TVAL3: TV Minimization by Augmented Lagrangian and Alternating Direction Algorithm,&rdquo; 2009.</span><br>
+[8] CoS:<span class="STYLE37"> J. Zhang, D. Zhao, C. Zhao, R. Xiong, S. Ma and  W. Gao, &ldquo;Image compressive sensing recovery via collaborative sparsity,&rdquo; <em>IEEE Journal on Emerging and Selected Topics  in Circuits and Systems</em>, vol. 2, no. 3, pp. 380&ndash;391, Sep. 2012.</span><br>
+      [9] TVMM: </span></span><span class="STYLE47">J. Bioucas-Dias, M. Figueiredo, J. Oliveira,  &ldquo;Total-variation image deconvolution: A majorization-minimization approach,&rdquo;<em> Proc. of IEEE Int. Conf. on Acoustics, Speech, and Signal Processing</em>, Toulouse,  France, 2006.</span><span class="STYLE46"><br>
+      <span class="STYLE24">[10] L0_ABS: </span></span><span class="STYLE47">J. Portilla, &ldquo;Image restoration through l0  analysis-based sparse optimization in tight frames,&rdquo;<em> Proc. of IEEE Int. conf.  Image Process.</em>, pp. 3909&ndash;3912, Nov. 2009.</span><span class="STYLE45"><br>
+      <span class="STYLE14"><span class="STYLE24">[11] IDDBM3D: </span></span></span><span class="STYLE47">A. Danielyan, V. Katkovnik, and K. Egiazarian,  &ldquo;BM3D frames and variational image deblurring,&rdquo;<em> IEEE Trans. Image Process.</em>,  vol. 21,no. 4, pp. 1715&ndash;1728, Apr. 2012.</span><span class="STYLE45"><br>
+      <span class="STYLE14"><span class="STYLE24">[12] NCSR: </span></span></span><span class="STYLE47">W. Dong, L. Zhang, G. Shi and X. Li, &ldquo;Nonlocally  Centralized Sparse Representation for Image Restoration,&rdquo;<em> IEEE Trans. on Image  Processing</em>, vol. 22, no. 4, pp. 1620&ndash;1630, Apr. 2013.</span><br>
+  </H4>
+  <H4 align="left" class="STYLE14">Last updated: April 16, 2014.  </H4>
+  <H4 align="center"><a href="#PageTop" class="STYLE14">TOP</a></H4>
+</CENTER>
+<a href="../Others/Image Completion/eeeeee"></a>
+</BODY></HTML>
