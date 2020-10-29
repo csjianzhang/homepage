@@ -24,5 +24,5 @@ Shenzhen Graduate School, Peking University, Shenzhen, China.
 He is now leading the
 [<b style="color: #00ff00;">V</b>isual-Information <b style="color: #FF9900;">I</b>ntelligent <b style="color: #3333CC;">L</b>earning <b style="color: #006600;">L</b><b style="color: #FF0000">A</b>B (<b style="color: #00ff00;">V</b><b style="color: #FF9900;">I</b><b style="color: #3333CC;">L</b><b style="color: #006600;">L</b><b style="color: #FF0000;">A</b>)](https://villa.jianzhang.tech)
 at PKU. His SECE webpage in Chinese is
-[here](http://www.ece.pku.edu.cn/2019/jsjyy_0624/79.html)
+[here](http://www.ece.pku.edu.cn/info/1012/1075.htm)
 .
