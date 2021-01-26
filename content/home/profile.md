@@ -35,5 +35,5 @@ Shenzhen, Guangdong, China
 [<b>[Google Scholar]</b>](https://scholar.google.com/citations?user=7brFI_4AAAAJ&hl=en)
 [<b>[Github]</b>](https://github.com/jianzhangcs/)
 
-[<b style="font-size: 1.2rem;">[Openings]</b>](https://villa.jianzhang.tech/#join-us)
+[<b style="font-size: 1.2rem;">[Openings]</b>【2021招收硕士/博士研究生/访问学生/博士后申请须知】](https://villa.jianzhang.tech/#join-us)
 <image style="display: inline-block;" src="/images/new.gif" alt="new" />
