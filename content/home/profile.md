@@ -14,7 +14,7 @@ weight: 10
 
 ---
 
-## Assistant Professor (助理教授/副研究员/博士生导师)
+## Assistant Professor (助理教授/研究员/博士生导师)
 
 {{< figure class="avatar" src="/images/avatar.jpg" >}}
 

@@ -18,6 +18,9 @@ weight: 60
 
 ## Codes
 
+- COLA-Net: Collaborative Attention Network for Image Restoration 2021
+  [[PyTorch]](https://github.com/jianzhangcs/COLA-Net)
+  ![alt new](/images/new.gif)
 - Optimization-Inspired Compact Deep Compressive Sensing 2020
   [[PyTorch]](/projects/OPINENet/)
   ![alt new](/images/new.gif)
@@ -25,7 +28,6 @@ weight: 60
   Compressive Sensing 2018
   [[Tensorflow]](https://github.com/jianzhangcs/ISTA-Net)
   [[PyTorch]](https://github.com/jianzhangcs/ISTA-Net-PyTorch)
-  ![alt new](/images/new.gif)
 - Video Compressive Sensing Reconstruction via Reweighted Residual Sparsity
   2017
   [[Download]](https://github.com/coolbay/CS-video-reconstruction-RRS)

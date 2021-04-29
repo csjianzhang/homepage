@@ -18,6 +18,7 @@ weight: 120
 
 ## Awards
 
+- Selected in the list of "Single Year Impact" of the top 2% scientists in the world in 2020
 - Best Paper Award (IEEE MultiMedia) 2018
 - [Best Student Paper Award at IEEE Visual Communications and Image Processing (VCIP) 2015](/images/VCIP2015_BestStudentPaperAward.jpg)
 - Excellent Ph.D. Thesis Award, Harbin Section, ACM China 2015
