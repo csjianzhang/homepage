@@ -5,7 +5,7 @@
 widget = "pages"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 80  # Order that this section will appear.
+weight = 82  # Order that this section will appear.
 
 title = ""
 subtitle = ""
@@ -27,9 +27,10 @@ subtitle = ""
   [content.filters]
     tag = ""
     category = ""
-    publication_type = "1"
+    publication_type = ""
     author = ""
     exclude_featured = false
+    exclude_future = "2021-01-01"
 
 [design]
   # Toggle between the various page layout types.
@@ -39,4 +40,4 @@ subtitle = ""
 
 ---
 
-## Conference Papers
+## Before 2021

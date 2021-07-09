@@ -39,10 +39,10 @@
   {{ $query = where $query "Params.featured" "!=" true }}
 {{ end }}
 {{ if $st.Params.content.filters.exclude_past }}
-  {{ $query = where $query "Date" ">=" now }}
+  {{ $query = where $query "Date" ">=" (time $st.Params.content.filters.exclude_past) }}
 {{ end }}
 {{ if $st.Params.content.filters.exclude_future }}
-  {{ $query = where $query "Date" "<" now }}
+  {{ $query = where $query "Date" "<" (time $st.Params.content.filters.exclude_future) }}
 {{ end }}
 
 {{ $count := len $query }}
