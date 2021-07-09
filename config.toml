@@ -25,7 +25,7 @@ math = false  # enable KaTeX (https://katex.org/) globally
     weight = 1
   [[menu.main]]
     name = "Publications"
-    url = "#journal_articles"
+    url = "#papers_2021"
     weight = 2
   [[menu.main]]
     name = "Activities"
