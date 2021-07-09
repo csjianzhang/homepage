@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: 'Iterative Network for Image Super-Resolution ![alt new](/images/new.gif)'
+title: 'Iterative Network for Image Super-Resolution'
 subtitle: ''
 summary: ''
 authors:

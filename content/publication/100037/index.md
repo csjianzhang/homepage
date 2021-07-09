@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: 'Spk2ImgNet:Learning to Reconstruct Dynamic Scene from Continuous Spike Stream ![alt new](/images/new.gif)'
+title: 'Spk2ImgNet:Learning to Reconstruct Dynamic Scene from Continuous Spike Stream'
 subtitle: ''
 summary: ''
 authors:

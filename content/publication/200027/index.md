@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: 'COLA-Net: Collaborative Attention Network for Image Restoration ![alt new](/images/new.gif)'
+title: 'COLA-Net: Collaborative Attention Network for Image Restoration'
 subtitle: ''
 summary: ''
 authors:

@@ -1,6 +1,6 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
-title: 'COAST: COntrollable Arbitrary-Sampling NeTwork for Compressive Sensing ![alt new](/images/new.gif)'
+title: 'COAST: COntrollable Arbitrary-Sampling NeTwork for Compressive Sensing'
 subtitle: ''
 summary: ''
 authors:
@@ -34,7 +34,7 @@ publishDate: '2021-06-04T00:00:00.000000Z'
 publication_types:
 - 2
 abstract: ''
-publication: '*IEEE Transactions on image Processing (TIP) (Code is coming soon)*'
+publication: '*IEEE Transactions on Image Processing (TIP) (Code is coming soon)*'
 
 
 # url_pdf:

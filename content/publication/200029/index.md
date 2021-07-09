@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: 'CAS: Correlation Adaptive Sparse Modeling for Image Denoising ![alt new](/images/new.gif)'
+title: 'CAS: Correlation Adaptive Sparse Modeling for Image Denoising'
 subtitle: ''
 summary: ''
 authors:

@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: 'Matching on Sets: Conquer Occluded Person Re-Identification Without Alignment ![alt new](/images/new.gif)'
+title: 'Matching on Sets: Conquer Occluded Person Re-Identification Without Alignment'
 subtitle: ''
 summary: ''
 authors:
