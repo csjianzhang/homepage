@@ -34,11 +34,11 @@ publishDate: '2021-06-04T00:00:00.000000Z'
 publication_types:
 - 2
 abstract: ''
-publication: '*IEEE Transactions on Image Processing (TIP) (Code is coming soon)*'
+publication: '*IEEE Transactions on Image Processing (TIP)*'
 
 
-# url_pdf:
+url_pdf: https://ieeexplore.ieee.org/abstract/document/9467810
 # url_project:
-# url_code:
+url_code: https://github.com/jianzhangcs/COAST
 
 ---
